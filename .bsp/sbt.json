@@ -1,0 +1,1 @@
+{"name":"sbt","version":"1.4.0","bspVersion":"2.0.0-M5","languages":["scala"],"argv":["/Users/dinukaarseculeratne/Documents/software/jdk-12.0.2.jdk/Contents/Home/bin/java","-Xms100m","-Xmx100m","-classpath","/Users/dinukaarseculeratne/Documents/software/sbt-1.13.10/bin/sbt-launch.jar","xsbt.boot.Boot","-bsp"]}

@@ -1,5 +1,7 @@
 package chapter31
 
+import scala.annotation.tailrec
+
 object AllAboutRecursionPartOne extends App {
 
   //creating empty lists
@@ -28,7 +30,31 @@ object AllAboutRecursionPartOne extends App {
     //Since Nil == List() you can write the above case as case List() => 0 as well
 
     case head :: tail => head + sum(tail)
+    //When working with a list, a single element is often referred to as x ,
+    // and multiple elements are referred to as xs . It’s a way of indicating that x is singular and xs is plural,
+    // like referring to a single “pizza” or multiple “pizzas.”
+
   }
 
-  println(sum(List(1,2,3)))
+  println(sum(List(1, 2, 3)))
+
+
+  //the above sum function fails if you use it with a larger list due to a stackoverflow
+  //println((sum(List.range(1,10000))))
+
+  //tail-recursive sum function
+
+  def tailRecSum(list: List[Int]): Int = {
+    @tailrec
+    def sumWithAccumulator(accumulator: Int, list: List[Int]): Int = list match {
+      case Nil => accumulator
+      case x :: xs => sumWithAccumulator(accumulator + x, xs)
+    }
+
+    sumWithAccumulator(0, list)
+  }
+
+  println(tailRecSum(List.range(1, 1000000)))
+
+
 }

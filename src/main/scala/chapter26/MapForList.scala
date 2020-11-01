@@ -2,7 +2,7 @@ package chapter26
 
 object MapForList extends App {
 
-  def map[A](f: Int => A, list: List[Int]): List[A] = {
+  def map[A,B](f: (A) => B, list: List[A]): List[B] = {
     for {
       x <- list
     } yield f(x)

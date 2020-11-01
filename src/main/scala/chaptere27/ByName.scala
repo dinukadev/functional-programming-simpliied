@@ -1,3 +1,5 @@
+package chaptere27
+
 object ByName extends App {
 
   def timer[A](blockOfCode: => A) = {
@@ -10,6 +12,7 @@ object ByName extends App {
 
 
   val sumFunc: (Int, Int) => Int = (a, b) => a + b
+
 
   print(timer(sumFunc(1, 2)))
 }

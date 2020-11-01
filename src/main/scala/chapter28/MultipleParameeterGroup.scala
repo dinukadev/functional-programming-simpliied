@@ -19,4 +19,8 @@ object MultipleParameeterGroup extends App {
     println(i)
     i += 1
   }
+
+  def defaultParams(a:Int = 1)(b: Int = 2)= a+ b
+
+  println(defaultParams()())
 }

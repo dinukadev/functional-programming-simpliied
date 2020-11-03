@@ -1,5 +1,7 @@
 package chapter53
 
+import org.scalactic.{Bad, ErrorMessage, Good, Or}
+
 import scala.util.{Failure, Success, Try}
 
 object PureFunctions extends App {
@@ -70,4 +72,29 @@ object PureFunctions extends App {
 
   val myInValidInputOrElseWithTry = makeIntWithTry("dummy").getOrElse("2")
   println(myInValidInputOrElseWithTry)
+
+  def makeIntWithScalatic(s:String): Int Or ErrorMessage = {
+    try{
+      Good(s.toInt)
+    }catch {
+      case e: Exception => Bad(e.toString)
+    }
+  }
+
+  val myValidInputWithScalatic = makeIntWithScalatic("2") match {
+    case Good(value) => println(value)
+    case Bad(exception) => println(s"Exception occurred : ${exception}")
+  }
+
+  val myInValidInputWithScalactic = makeIntWithScalatic("dummy") match {
+    case Good(value) => println(value)
+    case Bad(exception) => println(s"Exception occurred : ${exception}")
+  }
+
+  val resultWithScalactic = for {
+    a<- makeIntWithScalatic("2")
+    b<- makeIntWithScalatic("dummy")
+  } yield a+b
+
+  println(resultWithScalactic)
 }

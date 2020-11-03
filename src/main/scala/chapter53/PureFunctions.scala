@@ -68,4 +68,6 @@ object PureFunctions extends App {
 
   println(resultWithTry)
 
+  val myInValidInputOrElseWithTry = makeIntWithTry("dummy").getOrElse("2")
+  println(myInValidInputOrElseWithTry)
 }

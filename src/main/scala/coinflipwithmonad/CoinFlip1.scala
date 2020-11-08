@@ -26,7 +26,7 @@ object CoinFlip1 extends App {
       }
       coinTossResult = tossCoin(random)
       newNumFlips = gameState.numFlips + 1
-      newGameState = createNewGameState(userInput, coinTossResult, gameState, random, newNumFlips)
+      newGameState = createNewGameState(userInput, coinTossResult, gameState, newNumFlips)
       _ <- IO {
         printGameState(printableFlipResult(coinTossResult), newGameState)
       }
